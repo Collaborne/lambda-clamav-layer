@@ -5,9 +5,12 @@ env:
     # CodeBuild sets CODEBUILD_CI=true, but most about everyone checks for CI=true
     CI: 'true'
 phases:
+  pre_build:
+    commands:
+      - aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin 137112412989.dkr.ecr.${AWS_REGION}.amazonaws.com
   build:
     commands:
-      - make build
+      - make build AMAZONLINUX_DOCKER_IMAGE=137112412989.dkr.ecr.${AWS_REGION}.amazonaws.com/amazonlinux:2
 artifacts:
   files:
     - build/lambda_clamav_layer*.zip

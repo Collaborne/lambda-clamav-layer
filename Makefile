@@ -1,4 +1,5 @@
 REGION=us-west-1
+AMAZONLINUX_DOCKER_IMAGE=amazonlinux:2
 
 clean:
 	rm -fr ./build && \
@@ -11,7 +12,7 @@ clean:
 build: clean
 	docker run --rm \
 		-v `pwd`/build:/opt/app:Z \
-		amazonlinux:2 \
+		$(AMAZONLINUX_DOCKER_IMAGE) \
 		/bin/bash -c "cd /opt/app && ./build.sh"
 .PHONY: build
 
