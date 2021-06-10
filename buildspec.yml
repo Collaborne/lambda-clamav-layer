@@ -10,5 +10,5 @@ phases:
       - make build
 artifacts:
   files:
-    - build/lambda_layer*.zip
+    - build/lambda_clamav_layer*.zip
   discard-paths: yes
