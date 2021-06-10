@@ -56,12 +56,17 @@ rpm2cpio libcrypt*.rpm | cpio -vimd
 find usr -exec touch -t 200001010000 "{}" \;
 popd
 
-mkdir -p bin lib
+mkdir -p bin lib data
 
 cp /tmp/build/usr/bin/clamscan /tmp/build/usr/bin/freshclam bin/.
 cp -R /tmp/build/usr/lib64/* lib/.
 cp -R /tmp/build/lib64/* lib/.
 cp freshclam.conf bin/freshclam.conf
 
+# Download current virus signatures
+LD_LIBRARY_PATH=/lib64:/usr/lib64:$LD_LIBRARY_PATH:$PWD/lib bin/freshclam --config-file=$PWD/bin/freshclam.conf --datadir=$PWD/data
+
 zip -r9 /opt/app/lambda_layer.zip bin
 zip -r9 /opt/app/lambda_layer.zip lib
+
+zip -r9 /opt/app/lambda_layer_data.zip data
