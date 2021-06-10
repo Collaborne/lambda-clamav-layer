@@ -1,0 +1,14 @@
+version: 0.2
+
+env:
+  variables:
+    # CodeBuild sets CODEBUILD_CI=true, but most about everyone checks for CI=true
+    CI: 'true'
+phases:
+  build:
+    commands:
+      - make build
+artifacts:
+  files:
+    - build/lambda_layer*.zip
+  discard-paths: yes
