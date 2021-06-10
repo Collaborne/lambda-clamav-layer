@@ -68,5 +68,4 @@ LD_LIBRARY_PATH=/lib64:/usr/lib64:$LD_LIBRARY_PATH:$PWD/lib bin/freshclam --conf
 
 zip -r9 /opt/app/lambda_clamav_layer.zip bin
 zip -r9 /opt/app/lambda_clamav_layer.zip lib
-
-zip -r9 /opt/app/lambda_clamav_layer_data.zip data
+zip -r9 /opt/app/lambda_clamav_layer.zip data
