@@ -68,7 +68,7 @@ cp /tmp/build/usr/sbin/clamd sbin/.
 cp -R /tmp/build/usr/lib64/* lib/.
 cp -R /tmp/build/lib64/* lib/.
 cp freshclam.conf bin/freshclam.conf
-cp /tmp/build/etc/clamd.conf bin/clamd.conf
+cp /tmp/build/etc/clamd.conf sbin/clamd.conf
 
 # Download current virus signatures
 LD_LIBRARY_PATH=/lib64:/usr/lib64:$LD_LIBRARY_PATH:$PWD/lib bin/freshclam --config-file=$PWD/bin/freshclam.conf --datadir=$PWD/data
