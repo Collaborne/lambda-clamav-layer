@@ -5,7 +5,7 @@ env:
     # CodeBuild sets CODEBUILD_CI=true, but most about everyone checks for CI=true
     CI: 'true'
     # Layer version; bump this when the "API" of the layer changes
-    BASE_VERSION: '1.0'
+    BASE_VERSION: '1.0.0'
 phases:
   pre_build:
     commands:
