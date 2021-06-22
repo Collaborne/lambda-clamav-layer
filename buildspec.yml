@@ -13,8 +13,9 @@ phases:
   build:
     commands:
       - make build AMAZONLINUX_DOCKER_IMAGE=137112412989.dkr.ecr.${AWS_REGION}.amazonaws.com/amazonlinux:2
+      # Rename the file to include a version number before CodeBuild picks it up
+      - mv build/lambda_clamav_layer.zip build/lambda_clamav_layer-${BASE_VERSION}-b${CODEBUILD_BUILD_NUMBER}.zip
 artifacts:
   files:
     - build/lambda_clamav_layer*.zip
   discard-paths: yes
-  name: 'lambda_clamav_layer-${BASE_VERSION}-b${CODEBUILD_BUILD_NUMBER}.zip'
